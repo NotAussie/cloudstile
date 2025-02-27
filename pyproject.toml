@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cloudstile"
-version = "1.0.1"
+version = "1.0.2"
 description = "Unofficial Cloudflare Turnstile library for Python with async and sync support."
 authors = ["NotAussie <notaussie@duck.com>"]
 license = "MIT"

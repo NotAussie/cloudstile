@@ -1,19 +1,19 @@
 # `⛅` CloudStile
- An unoffical Cloudflare Turnstile library with both asynchronous and synchronous support out of the box. 
+An unofficial Cloudflare Turnstile library with both asynchronous and synchronous support out of the box.
 
- You can find more documention on how to use CloudStile in our [examples](https://github.com/notaussie/cloudstile/tree/main/examples) or our [wiki](https://github.com/notaussie/cloudstile/wiki).
+You can find more documentation on how to use CloudStile in our [examples](https://github.com/notaussie/cloudstile/tree/main/examples) or our [wiki](https://github.com/notaussie/cloudstile/wiki).
 
 ## `📥` Installation
- **CloudStile** is available for download via PyPI, to install it simply do:
- ```shell
- pip install cloudstile
- ```
+**CloudStile** is available for download via PyPI. To install it, simply do:
+```shell
+pip install cloudstile
+```
 
 ## `🎭` Example
 
-Here are some *basic* examples of how to validate a user's turnstile token.
+Here are some basic examples of how to validate a user's turnstile token.
 
-> Note: These examples expect the user's IP to be transparent, if you're using something like Cloudflare's proxy then you'll need to access the corresponding header for your use-case.
+> Note: These examples expect the user's IP to be transparent. If you're using something like Cloudflare's proxy service, then you'll need to access the corresponding header for your use case.
 
 ### `🍷` Quart *(Asynchronous)*
 
@@ -34,7 +34,7 @@ async def submit():
         request.remote_addr,
     )
 
-    return jsonify(response.dict()) # <- Response is a pydantic object
+    return jsonify(response.model_dump()) # <- Response is a pydantic object
 
 ```
 
@@ -58,7 +58,7 @@ async def submit(request: Request):
         request.client.host,
     )
 
-    return JSONResponse(response.dict()) # <- Response is a pydantic object
+    return JSONResponse(response.model_dump()) # <- Response is a pydantic object
 
 ```
 
@@ -82,6 +82,6 @@ def submit():
         request.remote_addr,
     )
 
-    return jsonify(response.dict()) # <- Response is a pydantic object
+    return jsonify(response.model_dump()) # <- Response is a pydantic object
 
 ```
