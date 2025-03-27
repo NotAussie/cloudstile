@@ -56,6 +56,3 @@ def test_sync_spent():
     assert isinstance(response, Response), "Response was not a Response object"
     assert response.success == False, "Response was successful"
     assert "timeout-or-duplicate" in response.error_codes
-
-
-test_sync_spent()
