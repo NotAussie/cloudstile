@@ -21,6 +21,9 @@ jobs:
         with:
           poetry-version: latest
 
+      - name: Debug
+        run: ls -la
+
       - name: Install dependencies
         run: |
           poetry install --with tests
