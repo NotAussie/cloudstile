@@ -32,4 +32,9 @@ jobs:
           poetry install --with tests
       
       - name: Summarize tests
-        uses: dariocurr/pytest-summary@main
+        uses: pavelzw/pytest-action@v2
+        with:
+          emoji: true
+          verbose: true
+          job-summary: true
+          custom-pytest: poetry run pytest
