@@ -22,7 +22,7 @@ jobs:
           poetry-version: latest
 
       - name: Debug
-        run: ls -la
+        run: ls
 
       - name: Install dependencies
         run: |
