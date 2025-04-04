@@ -38,4 +38,3 @@ jobs:
           verbose: true
           job-summary: true
           custom-pytest: poetry run pytest
-          custom-arguments: --cov=cloudstile --cov-append
