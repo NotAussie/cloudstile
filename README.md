@@ -3,6 +3,8 @@ An unofficial Cloudflare Turnstile library with both asynchronous and synchronou
 
 You can find more documentation on how to use CloudStile in our [examples](https://github.com/notaussie/cloudstile/tree/main/examples) or our [wiki](https://github.com/notaussie/cloudstile/wiki).
 
+[![codecov](https://codecov.io/github/NotAussie/cloudstile/graph/badge.svg?token=6VKWB9GXEU)](https://codecov.io/github/NotAussie/cloudstile)
+
 ## `📥` Installation
 **CloudStile** is available for download via PyPI. To install it, simply do:
 ```shell
