@@ -37,4 +37,10 @@ jobs:
           emoji: true
           verbose: true
           job-summary: true
-          custom-pytest: poetry run pytest
+          custom-pytest: poetry run pytest --junitxml=junit.xml -o junit_family=legacy
+
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
