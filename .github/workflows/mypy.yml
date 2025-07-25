@@ -1,0 +1,43 @@
+name: mypy type checking
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    permissions:
+      contents: read
+    
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.13
+
+      - name: Install poetry
+        uses: abatilo/actions-poetry@v3
+        with:
+          poetry-version: latest
+
+      - name: Install dependencies
+        run: |
+          poetry install --with types
+
+      - name: Mypy cache
+        uses: actions/cache@v4
+        with:
+          path: .mypy_cache
+          key: ${{ runner.os }}-mypy-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mypy-
+
+      - name: Run mypy
+        run: |
+          poetry run mypy --show-error-codes --show
+
+      

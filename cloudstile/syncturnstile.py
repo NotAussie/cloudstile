@@ -1,7 +1,6 @@
-import json
 from typing import Optional
 from .base import BaseTurnstile
-from .models import HTTPError, InvalidInputSecret, Response
+from .models import Response
 import httpx
 
 

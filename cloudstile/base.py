@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import logging
 from .models import Response
-from typing import Optional
+from typing import Optional, Union, Coroutine
 
 
 class BaseTurnstile(ABC):
@@ -37,7 +37,7 @@ class BaseTurnstile(ABC):
         token: str,
         ip: Optional[str] = None,
         idempotency_key: Optional[str] = None,
-    ) -> Response:
+    ) -> Union[Response, Coroutine[None, None, Response]]:
         """
         Validates the provided Turnstile token against the Cloudflare
         Turnstile service.
