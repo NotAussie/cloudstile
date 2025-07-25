@@ -38,6 +38,6 @@ jobs:
 
       - name: Run mypy
         run: |
-          poetry run mypy --show-error-codes --show
+          poetry run mypy ./cloudstile
 
       
