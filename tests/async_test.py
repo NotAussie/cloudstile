@@ -1,5 +1,4 @@
 import pytest
-from asyncio import iscoroutine
 from cloudstile import AsyncTurnstile, Response
 
 TEST_RESPONSE = "XXXX.DUMMY.TOKEN.XXXX"
@@ -9,7 +8,7 @@ ALWAYS_SPENT = "3x0000000000000000000000000000000AA"
 
 
 @pytest.mark.asyncio
-async def test_async_pass():
+async def test_async_pass() -> None:
 
     turnstile = AsyncTurnstile(ALWAYS_PASS)
 
@@ -20,7 +19,7 @@ async def test_async_pass():
 
 
 @pytest.mark.asyncio
-async def test_async_ip():
+async def test_async_ip() -> None:
 
     turnstile = AsyncTurnstile(ALWAYS_PASS)
 
@@ -31,7 +30,7 @@ async def test_async_ip():
 
 
 @pytest.mark.asyncio
-async def test_async_idempotency():
+async def test_async_idempotency() -> None:
 
     turnstile = AsyncTurnstile(ALWAYS_PASS)
 
@@ -42,7 +41,7 @@ async def test_async_idempotency():
 
 
 @pytest.mark.asyncio
-async def test_async_fail():
+async def test_async_fail() -> None:
 
     turnstile = AsyncTurnstile(ALWAYS_FAIL)
 
@@ -53,7 +52,7 @@ async def test_async_fail():
 
 
 @pytest.mark.asyncio
-async def test_async_spent():
+async def test_async_spent() -> None:
 
     turnstile = AsyncTurnstile(ALWAYS_SPENT)
 

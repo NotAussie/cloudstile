@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          poetry install --with types
+          poetry install --with types, tests
 
       - name: Mypy cache
         uses: actions/cache@v4
@@ -36,8 +36,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-mypy-
 
-      - name: Run mypy
+      - name: Run mypy on cloudstile
         run: |
           poetry run mypy ./cloudstile
 
-      
+      - name: Run mypy on test
+        run: |
+          poetry run mypy ./tests

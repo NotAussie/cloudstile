@@ -1,4 +1,3 @@
-import pytest
 from cloudstile import SyncTurnstile, Response
 
 TEST_RESPONSE = "XXXX.DUMMY.TOKEN.XXXX"
@@ -7,7 +6,7 @@ ALWAYS_FAIL = "2x0000000000000000000000000000000AA"
 ALWAYS_SPENT = "3x0000000000000000000000000000000AA"
 
 
-def test_async_ip():
+def test_sync_ip() -> None:
 
     turnstile = SyncTurnstile(ALWAYS_PASS)
 
@@ -17,7 +16,7 @@ def test_async_ip():
     assert response.success == True, "Response was not successful"
 
 
-def test_async_idempotency():
+def test_sync_idempotency() -> None:
 
     turnstile = SyncTurnstile(ALWAYS_PASS)
 
@@ -27,7 +26,7 @@ def test_async_idempotency():
     assert response.success == True, "Response was not successful"
 
 
-def test_sync_pass():
+def test_sync_pass() -> None:
 
     turnstile = SyncTurnstile(ALWAYS_PASS)
 
@@ -37,7 +36,7 @@ def test_sync_pass():
     assert response.success == True, "Response was not successful"
 
 
-def test_sync_fail():
+def test_sync_fail() -> None:
 
     turnstile = SyncTurnstile(ALWAYS_FAIL)
 
@@ -47,7 +46,7 @@ def test_sync_fail():
     assert response.success == False, "Response was successful"
 
 
-def test_sync_spent():
+def test_sync_spent() -> None:
 
     turnstile = SyncTurnstile(ALWAYS_SPENT)
 
