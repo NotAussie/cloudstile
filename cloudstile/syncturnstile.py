@@ -39,6 +39,11 @@ class SyncTurnstile(BaseTurnstile):
         Returns:
             Response: The response from the Turnstile validation service,
                 which contains the result of the validation.
+
+        Raises:
+            httpx.HTTPStatusError: If the request to the Turnstile service
+                fails with a non-2xx status code.
+            httpx.RequestError: If there is an error making the request.
         """
         with httpx.Client() as client:
 
