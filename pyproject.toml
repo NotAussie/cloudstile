@@ -22,7 +22,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.10"
 httpx = "0.28.1"
-typing-extensions = "4.13.2"
+typing-extensions = "4.14.1"
 pydantic = "2.11.7" 
 
 [tool.poetry.group.dev.dependencies]
