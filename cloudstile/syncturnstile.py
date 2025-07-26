@@ -1,3 +1,5 @@
+"""Synchronous implementation of the Cloudflare Turnstile API."""
+
 from typing import Optional
 from .base import BaseTurnstile
 from .models import Response
@@ -58,7 +60,7 @@ class SyncTurnstile(BaseTurnstile):
             if idempotency_key:
                 data["idempotency_key"] = idempotency_key
 
-            resp = client.post(self._validateRoute, json=data)
+            resp = client.post(self._validate_route, json=data)
             resp.raise_for_status()
 
             response = Response.model_validate(resp.json())

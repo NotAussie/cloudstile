@@ -1,3 +1,5 @@
+"""Synchronous tests for the Cloudflare Turnstile API integration."""
+
 from cloudstile import SyncTurnstile, Response
 
 TEST_RESPONSE = "XXXX.DUMMY.TOKEN.XXXX"
@@ -13,7 +15,7 @@ def test_sync_ip() -> None:
     response = turnstile.validate(TEST_RESPONSE, "192.168.1.1")
 
     assert isinstance(response, Response), "Response was not a Response object"
-    assert response.success == True, "Response was not successful"
+    assert response.success is True, "Response was not successful"
 
 
 def test_sync_idempotency() -> None:
@@ -23,7 +25,7 @@ def test_sync_idempotency() -> None:
     response = turnstile.validate(TEST_RESPONSE, idempotency_key="abc123456789")
 
     assert isinstance(response, Response), "Response was not a Response object"
-    assert response.success == True, "Response was not successful"
+    assert response.success is True, "Response was not successful"
 
 
 def test_sync_pass() -> None:
@@ -33,7 +35,7 @@ def test_sync_pass() -> None:
     response = turnstile.validate(TEST_RESPONSE)
 
     assert isinstance(response, Response), "Response was not a Response object"
-    assert response.success == True, "Response was not successful"
+    assert response.success is True, "Response was not successful"
 
 
 def test_sync_fail() -> None:
@@ -43,7 +45,7 @@ def test_sync_fail() -> None:
     response = turnstile.validate(TEST_RESPONSE)
 
     assert isinstance(response, Response), "Response was not a Response object"
-    assert response.success == False, "Response was successful"
+    assert response.success is False, "Response was successful"
 
 
 def test_sync_spent() -> None:
@@ -53,5 +55,5 @@ def test_sync_spent() -> None:
     response = turnstile.validate(TEST_RESPONSE)
 
     assert isinstance(response, Response), "Response was not a Response object"
-    assert response.success == False, "Response was successful"
+    assert response.success is False, "Response was successful"
     assert "timeout-or-duplicate" in response.error_codes

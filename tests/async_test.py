@@ -1,3 +1,5 @@
+"""Asynchronous tests for the Cloudflare Turnstile API integration."""
+
 import pytest
 from cloudstile import AsyncTurnstile, Response
 
@@ -15,7 +17,7 @@ async def test_async_pass() -> None:
     response = await turnstile.validate(TEST_RESPONSE)
 
     assert isinstance(response, Response), "Response was not a Response object"
-    assert response.success == True, "Response was not successful"
+    assert response.success is True, "Response was not successful"
 
 
 @pytest.mark.asyncio
@@ -26,7 +28,7 @@ async def test_async_ip() -> None:
     response = await turnstile.validate(TEST_RESPONSE, "192.168.1.1")
 
     assert isinstance(response, Response), "Response was not a Response object"
-    assert response.success == True, "Response was not successful"
+    assert response.success is True, "Response was not successful"
 
 
 @pytest.mark.asyncio
@@ -37,7 +39,7 @@ async def test_async_idempotency() -> None:
     response = await turnstile.validate(TEST_RESPONSE, idempotency_key="abc123456789")
 
     assert isinstance(response, Response), "Response was not a Response object"
-    assert response.success == True, "Response was not successful"
+    assert response.success is True, "Response was not successful"
 
 
 @pytest.mark.asyncio
@@ -48,7 +50,7 @@ async def test_async_fail() -> None:
     response = await turnstile.validate(TEST_RESPONSE)
 
     assert isinstance(response, Response), "Response was not a Response object"
-    assert response.success == False, "Response was successful"
+    assert response.success is False, "Response was successful"
 
 
 @pytest.mark.asyncio
@@ -59,5 +61,5 @@ async def test_async_spent() -> None:
     response = await turnstile.validate(TEST_RESPONSE)
 
     assert isinstance(response, Response), "Response was not a Response object"
-    assert response.success == False, "Response was successful"
+    assert response.success is False, "Response was successful"
     assert "timeout-or-duplicate" in response.error_codes

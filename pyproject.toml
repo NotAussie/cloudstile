@@ -26,9 +26,9 @@ httpx = "0.28.1"
 typing-extensions = "4.13.2"
 pydantic = "2.11.7" 
 
-[tool.poetry.group.dev.dependencies]
-black = "^25.1.0"
+[tool.poetry.group.lint.dependencies]
 pylint = "^3.3.7"
+black = "^25.1.0"
 
 [tool.poetry.group.types.dependencies]
 mypy = "^1.17.0"

@@ -1,3 +1,6 @@
+"""Tests for Response model validation."""
+
+from typing import Any, Dict
 from datetime import datetime
 from cloudstile.models import Response
 
@@ -8,7 +11,6 @@ ERROR_CODES = [
     "timeout-or-duplicate",
     "internal-error",
 ]
-from typing import Any, Dict
 
 DATA: Dict[str, Any] = {
     "success": False,

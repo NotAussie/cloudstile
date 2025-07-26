@@ -1,4 +1,4 @@
-name: 'Create reminder'
+name: "Create reminder"
 
 permissions:
   issues: write

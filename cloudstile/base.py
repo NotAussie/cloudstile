@@ -1,3 +1,5 @@
+"""Abstract base class for implementing Cloudflare Turnstile interactions."""
+
 from abc import ABC, abstractmethod
 import logging
 from .models import Response
@@ -25,7 +27,7 @@ class BaseTurnstile(ABC):
         """
         self._secret = secret
 
-        self._validateRoute = (
+        self._validate_route = (
             "https://challenges.cloudflare.com/turnstile/v0/siteverify"
         )
 

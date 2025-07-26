@@ -1,8 +1,8 @@
-name: 'Check reminders'
+name: "Check reminders"
 
 on:
   schedule:
-    - cron: '0 0 * * 1'
+    - cron: "0 0 * * 1"
 
 permissions:
   issues: write

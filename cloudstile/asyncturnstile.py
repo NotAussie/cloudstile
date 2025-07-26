@@ -1,3 +1,5 @@
+"""Asynchronous implementation of the Cloudflare Turnstile API."""
+
 from typing import Optional
 from .base import BaseTurnstile
 from .models import Response
@@ -16,7 +18,7 @@ class AsyncTurnstile(BaseTurnstile):
         BaseTurnstile: The abstract base class for Turnstile validation.
     """
 
-    async def validate(
+    async def validate(  # pylint: disable=invalid-overridden-method
         self,
         token: str,
         ip: Optional[str] = None,
@@ -58,7 +60,7 @@ class AsyncTurnstile(BaseTurnstile):
             if idempotency_key:
                 data["idempotency_key"] = idempotency_key
 
-            resp = await client.post(self._validateRoute, json=data)
+            resp = await client.post(self._validate_route, json=data)
             resp.raise_for_status()
 
             response = Response.model_validate(resp.json())
