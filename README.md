@@ -1,12 +1,12 @@
-# `⛅` CloudStile
+# `⛅` Cloudstile
 An unofficial Cloudflare Turnstile library with both asynchronous and synchronous support out of the box.
 
-You can find more documentation on how to use CloudStile in our [examples](https://github.com/notaussie/cloudstile/tree/main/examples) or our [wiki](https://github.com/notaussie/cloudstile/wiki).
+You can find more documentation on how to use Cloudstile in our [examples](https://github.com/notaussie/cloudstile/tree/main/examples) or our [wiki](https://github.com/notaussie/cloudstile/wiki).
 
 [![codecov](https://codecov.io/github/NotAussie/cloudstile/graph/badge.svg?token=6VKWB9GXEU)](https://codecov.io/github/NotAussie/cloudstile)
 
 ## `📥` Installation
-**CloudStile** is available for download via PyPI. To install it, simply do:
+**Cloudstile** is available for download via PyPI. To install it, simply do:
 ```shell
 pip install cloudstile
 ```
@@ -15,7 +15,8 @@ pip install cloudstile
 
 Here are some basic examples of how to validate a user's turnstile token.
 
-> Note: These examples expect the user's IP to be transparent. If you're using something like Cloudflare's proxy service, then you'll need to access the corresponding header for your use case.
+> [!WARNING]
+> These examples expect the user's IP to be transparent. If you're using something like Cloudflare's proxy service, then you'll need to access the corresponding header for your use case.
 
 ### `🍷` Quart *(Asynchronous)*
 

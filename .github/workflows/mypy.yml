@@ -1,0 +1,45 @@
+name: Mypy
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    permissions:
+      contents: read
+
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.13
+
+      - name: Install poetry
+        uses: abatilo/actions-poetry@v4
+        with:
+          poetry-version: latest
+
+      - name: Install dependencies
+        run: |
+          poetry install --with types,tests
+
+      - name: Mypy cache
+        uses: actions/cache@v4
+        with:
+          path: .mypy_cache
+          key: ${{ runner.os }}-mypy-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mypy-
+
+      - name: Run mypy on cloudstile
+        run: |
+          poetry run mypy ./cloudstile
+
+      - name: Run mypy on test
+        run: |
+          poetry run mypy ./tests

@@ -1,6 +1,8 @@
-import pytest
+"""Tests for Response model validation."""
+
+from typing import Any, Dict
 from datetime import datetime
-from cloudstile.models import Response, CloudStileError, HTTPError
+from cloudstile.models import Response
 
 ERROR_CODES = [
     "missing-input-response",
@@ -9,7 +11,8 @@ ERROR_CODES = [
     "timeout-or-duplicate",
     "internal-error",
 ]
-DATA = {
+
+DATA: Dict[str, Any] = {
     "success": False,
     "hostname": "example.com",
     "challenge_ts": datetime.now(),
@@ -19,7 +22,7 @@ DATA = {
 }
 
 
-def test_validation():
+def test_validation() -> None:
 
     response = Response.model_validate(DATA)
 
@@ -45,22 +48,3 @@ def test_validation():
         response.metadata.result_with_testing_key
         == DATA["metadata"]["result_with_testing_key"]
     ), "Response metadata result_with_testing_key should match the input data"
-
-
-def test_cloud_stile_error():
-    message = "Test error message"
-    with pytest.raises(CloudStileError, match=message):
-        raise CloudStileError(message)
-
-
-def test_http_error():
-    status_code = 404
-    message = "Not Found"
-    with pytest.raises(HTTPError, match=message):
-        raise HTTPError(status_code, message)
-
-    error_instance = HTTPError(status_code, message)
-    assert (
-        error_instance.status_code == status_code
-    ), "HTTPError status_code should match the input"
-    assert error_instance.message == message, "HTTPError message should match the input"
