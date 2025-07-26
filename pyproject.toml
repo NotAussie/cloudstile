@@ -23,7 +23,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.9"
 httpx = "0.28.1"
-typing-extensions = "4.13.2"
+typing-extensions = "4.14.1"
 pydantic = "2.11.7" 
 
 [tool.poetry.group.lint.dependencies]
@@ -34,11 +34,11 @@ black = "^25.1.0"
 mypy = "^1.17.0"
 
 [tool.poetry.group.tests.dependencies]
-pytest-asyncio = ">=0.25.3,<1.2.0"
-pytest-emoji = "0.2.0"
-pytest-cov = "^6.0.0"
-pytest-md = "0.2.0" 
-pytest = "^8.3.4"
+pytest-asyncio = "^1.1.0"
+pytest-emoji = "^0.2.0"
+pytest-cov = "^6.2.1"
+pytest-md = "^0.2.0"
+pytest = "^8.4.1"
 
 
 [build-system]
