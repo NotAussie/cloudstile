@@ -36,7 +36,7 @@ mypy = "^1.17.0"
 [tool.poetry.group.tests.dependencies]
 pytest-asyncio = "^1.1.0"
 pytest-emoji = "^0.2.0"
-pytest-cov = "^6.2.1"
+pytest-cov = ">=6.2.1,<8.0.0"
 pytest-md = "^0.2.0"
 pytest = "^8.4.1"
 
