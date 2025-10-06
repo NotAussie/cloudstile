@@ -24,7 +24,7 @@ classifiers = [
 python = "^3.9"
 httpx = "0.28.1"
 typing-extensions = "4.14.1"
-pydantic = "2.11.7" 
+pydantic = "2.11.10" 
 
 [tool.poetry.group.lint.dependencies]
 pylint = "^3.3.7"
