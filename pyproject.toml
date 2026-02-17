@@ -12,23 +12,23 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Security",
     "Intended Audience :: Developers",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Operating System :: OS Independent"
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 httpx = "0.28.1"
-typing-extensions = "4.14.1"
-pydantic = "2.12.3" 
+typing-extensions = "4.15.0"
+pydantic = "2.12.5" 
 
 [tool.poetry.group.lint.dependencies]
-pylint = "^3.3.7"
-black = "^25.1.0"
+pylint = "^4.0.4"
+black = "^26.1.0"
 
 [tool.poetry.group.types.dependencies]
 mypy = "^1.17.0"
@@ -36,9 +36,9 @@ mypy = "^1.17.0"
 [tool.poetry.group.tests.dependencies]
 pytest-asyncio = "^1.1.0"
 pytest-emoji = "^0.2.0"
-pytest-cov = "^6.2.1"
+pytest-cov = "^7.0.0"
 pytest-md = "^0.2.0"
-pytest = "^8.4.1"
+pytest = "^9.0.2"
 
 
 [build-system]
