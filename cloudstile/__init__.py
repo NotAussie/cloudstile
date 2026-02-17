@@ -1,18 +1,35 @@
-"""Cloudstile, the easy to use Cloudflare Turnstile client.
+"""Cloudstile: Easy-to-use Cloudflare Turnstile client.
 
 This library provides easy-to-use synchronous and asynchronous clients for Cloudflare's Turnstile service.
 
-Example usage:
+.. note::
+    For more information, visit `Cloudflare Turnstile <https://developers.cloudflare.com/turnstile/>`_.
 
-    >>> from cloudstile import SyncTurnstile
+Example
+-------
 
-    >>> client = SyncTurnstile(token="...")
+Synchronous usage::
 
-    >>> response = client.validate("...")
-    >>> print(response.success)
-    True
+     from cloudstile import SyncTurnstile
 
----
+     client = SyncTurnstile(token="your-secret-key")
+     response = client.validate("token-from-client")
+     print(response.success)
+
+Asynchronous usage::
+
+     from cloudstile import AsyncTurnstile
+     import asyncio
+
+     async def main():
+          client = AsyncTurnstile(token="your-secret-key")
+          response = await client.validate("token-from-client")
+          print(response.success)
+
+     asyncio.run(main())
+
+License
+-------
 
 MIT License
 

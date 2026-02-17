@@ -6,11 +6,12 @@ from pydantic import BaseModel, Field
 
 
 class MetaData(BaseModel):
-    """
-    Represents metadata associated with the Turnstile response.
+    """Represents metadata associated with the Turnstile response.
 
-    Attributes:
-        ephemeral_id (Optional[str]): An optional identifier for the ephemeral session.
+    :ivar ephemeral_id: An optional identifier for the ephemeral session.
+    :vartype ephemeral_id: Optional[str]
+    :ivar result_with_testing_key: Whether the result is from a testing key.
+    :vartype result_with_testing_key: bool
     """
 
     ephemeral_id: Optional[str] = None
@@ -19,17 +20,22 @@ class MetaData(BaseModel):
 
 
 class Response(BaseModel):
-    """
-    Represents the response from the Cloudflare Turnstile verification.
+    """Represents the response from the Cloudflare Turnstile verification.
 
-    Attributes:
-        success (bool): Indicates whether the verification was successful.
-        hostname (Optional[str]): The hostname of the site where the Turnstile was used.
-        action (Optional[str]): An optional action name associated with the Turnstile request.
-        cdata (Optional[str]): An optional custom data field.
-        metadata (MetaData): Optional metadata related to the Turnstile response.
-        timestamp (Optional[datetime]): The time when the challenge was solved.
-        error_codes (list[str]): A list of error codes that may be returned in case of failure.
+    :ivar success: Indicates whether the verification was successful.
+    :vartype success: bool
+    :ivar hostname: The hostname of the site where the Turnstile was used.
+    :vartype hostname: Optional[str]
+    :ivar action: An optional action name associated with the Turnstile request.
+    :vartype action: Optional[str]
+    :ivar cdata: An optional custom data field.
+    :vartype cdata: Optional[str]
+    :ivar metadata: Optional metadata related to the Turnstile response.
+    :vartype metadata: MetaData
+    :ivar timestamp: The time when the challenge was solved.
+    :vartype timestamp: Optional[datetime]
+    :ivar error_codes: A list of error codes that may be returned in case of failure.
+    :vartype error_codes: list[str]
     """
 
     success: bool
@@ -41,9 +47,7 @@ class Response(BaseModel):
     action: Optional[str] = None
     """An optional action name associated with the Turnstile request."""
 
-    cdata: Optional[str] = (
-        None  # TODO: Get clarification on the type of cdata from Cloudflare.
-    )
+    cdata: Optional[str] = None
     """An optional custom data field."""
 
     metadata: MetaData = MetaData()

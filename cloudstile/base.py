@@ -14,16 +14,22 @@ class BaseTurnstile(ABC):
     validator, including the necessary configuration for secret management
     and idempotency.
 
-    Attributes:
-        _secret (str): The Cloudflare Turnstile secret used for validation.
-        _validateRoute (str): The URL endpoint for Turnstile validation.
+    Attributes
+    ----------
+    _secret : str
+        The Cloudflare Turnstile secret used for validation.
+    _validate_route : str
+        The URL endpoint for Turnstile validation.
     """
 
     def __init__(self, secret: str):
-        """Initializes the Turnstile client instance with the provided secret.
+        """
+        Initialize the Turnstile client instance.
 
-        Args:
-            secret (str): Your Cloudflare Turnstile secret.
+        Parameters
+        ----------
+        secret : str
+            Cloudflare Turnstile secret.
         """
         self._secret = secret
 
@@ -41,20 +47,21 @@ class BaseTurnstile(ABC):
         idempotency_key: Optional[str] = None,
     ) -> Union[Response, Coroutine[None, None, Response]]:
         """
-        Validates the provided Turnstile token against the Cloudflare
-        Turnstile service.
+        Validate a Turnstile token against the Cloudflare service.
 
-        This method must be implemented by subclasses to perform the actual
-        validation logic.
+        Parameters
+        ----------
+        token : str
+            Turnstile token to validate.
+        ip : str, optional
+            IP address of the submitting user.
+        idempotency_key : str, optional
+            Unique key to ensure the request is idempotent.
 
-        Args:
-            token (str): The Turnstile token to validate.
-            ip (Optional[str]): The IP address of the user submitting the
-                token. Defaults to None.
-            idempotency_key (Optional[str]): A unique key to ensure that
-                the validation request is idempotent. Defaults to None.
-
-        Returns:
-            Response: The response from the Turnstile validation service,
-                which contains the result of the validation.
+        Returns
+        -------
+        Response
+            Response from the Turnstile validation service.
+        Coroutine[None, None, Response]
+            Asynchronous response if implemented asynchronously.
         """

@@ -10,12 +10,12 @@ class AsyncTurnstile(BaseTurnstile):
     """
     Asynchronous implementation of the Cloudflare Turnstile API.
 
-    This class extends the BaseTurnstile class to provide an asynchronous
+    This class extends the :class:`BaseTurnstile` class to provide an asynchronous
     method for validating Turnstile tokens using the Cloudflare Turnstile
     service.
 
     Inherits from:
-        BaseTurnstile: The abstract base class for Turnstile validation.
+        :class:`BaseTurnstile`: The abstract base class for Turnstile validation.
     """
 
     async def validate(  # pylint: disable=invalid-overridden-method
@@ -25,27 +25,21 @@ class AsyncTurnstile(BaseTurnstile):
         idempotency_key: Optional[str] = None,
     ) -> Response:
         """
-        Asynchronously validates the provided Turnstile token against the
-        Cloudflare Turnstile service.
+        Asynchronously validate a Turnstile token against the Cloudflare service.
 
-        This method sends a POST request to the Turnstile validation endpoint
-        with the necessary parameters and returns the validation response.
+        Sends a POST request to the Turnstile validation endpoint with the
+        necessary parameters and returns the validation response.
 
-        Args:
-            token (str): The Turnstile token to validate.
-            ip (Optional[str]): The IP address of the user submitting the
-                token. Defaults to None.
-            idempotency_key (Optional[str]): A unique key to ensure that
-                the validation request is idempotent. Defaults to None.
-
-        Returns:
-            Response: The response from the Turnstile validation service,
-                which contains the result of the validation.
-
-        Raises:
-            httpx.HTTPStatusError: If the request to the Turnstile service
-                fails with a non-2xx status code.
-            httpx.RequestError: If there is an error making the request.
+        :param token: The Turnstile token to validate.
+        :type token: str
+        :param ip: The IP address of the user submitting the token.
+        :type ip: Optional[str]
+        :param idempotency_key: A unique key to ensure idempotent validation requests.
+        :type idempotency_key: Optional[str]
+        :return: The response from the Turnstile validation service.
+        :rtype: :class:`Response`
+        :raises httpx.HTTPStatusError: If the request fails with a non-2xx status code.
+        :raises httpx.RequestError: If there is an error making the request.
         """
         async with httpx.AsyncClient() as client:
 
